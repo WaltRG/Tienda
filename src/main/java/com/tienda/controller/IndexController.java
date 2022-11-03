@@ -28,6 +28,7 @@ public class IndexController {
        
        var clientes = clienteService.getClientes();
         
+       
         model.addAttribute("clientes", clientes);
         
         

@@ -69,3 +69,25 @@ body{
     
         
 }
+
+
+.footer{
+    background-color: back;
+    text-align: center;
+    color: white;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.contenido{
+    background-color: wheat;
+    top: 90px;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    overflow: auto;
+}

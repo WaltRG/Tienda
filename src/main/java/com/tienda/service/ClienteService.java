@@ -8,7 +8,7 @@ public interface ClienteService {
     // se define el CRUD
     
     //Retorna lita de clientes
-    public List<Cliente> getClientes();
+    public List<Cliente> getClientes(boolean activos);
     
     //Dado un cliente.id se busca en la tabla y se retorna al objeto Cliente
     public Cliente getCliente(Cliente cliente);

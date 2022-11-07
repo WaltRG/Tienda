@@ -1,0 +1,50 @@
+<html
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        
+       
+        <h2>Listado de clientes</h2>
+        <a th:href="@{/cliente/nuevo}">Nuevo cliente</a>
+        
+        <div th:if="${clientes !=null and !clientes.empty}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Credito</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cliente : ${clientes}">
+                    <td>[[${cliente.nombre}]]</td>
+                    <td>[[${cliente.apellidos}]]</td>
+                    <td>[[${cliente.correo}]]</td>
+                    <td>[[${cliente.telefono}]]</td>
+                    <td>[[${cliente.credito}]]</td>
+                    <td><a th:href="@{/cliente/eliminar/}+ ${cliente.idCliente}">Eliminar</td>
+                    <td><a th:href="@{/cliente/modificar/}+ ${cliente.idCliente}">Modificar</td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div th:if="${clientes ==null or clientes.empty}">
+            <h2>No se encuentran datos de table</h2>
+        </div>
+        
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

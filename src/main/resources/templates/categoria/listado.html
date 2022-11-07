@@ -1,0 +1,45 @@
+<html
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        
+       
+
+        <h2>Listado de categorias</h2>
+        <a th:href="@{/categoria/nuevo}">Nuevo categoria</a>
+        
+        <div th:if="${categorias !=null and !categorias.empty}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Activo</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td>[[${categoria.descripcion}]]</td>
+                    <td>[[${categoria.activo}]]</td>         
+                    <td><a th:href="@{/categoria/eliminar/}+ ${categoria.idCategoria}">Eliminar</td>
+                    <td><a th:href="@{/categoria/modificar/}+ ${categoria.idCategoria}">Modificar</td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div th:if="${categorias ==null or categorias.empty}">
+            <h2>No se encuentran datos de table</h2>
+        </div>
+        
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

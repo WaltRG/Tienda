@@ -1,0 +1,51 @@
+<html
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        
+        
+
+        <h2>Listado de articulos</h2>
+        <a th:href="@{/articulo/nuevo}">Nuevo articulo</a>
+        
+        <div th:if="${articulos !=null and !articulos.empty}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Descripcion</th>
+                    <th>Detalle</th>
+                    <th>Precio</th>
+                    <th>Existencias</th>
+                    <th>Activo</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="articulo : ${articulos}">
+                    <td>[[${articulo.descripcion}]]</td>
+                    <td>[[${articulo.detalle}]]</td>
+                    <td>[[${articulo.precio}]]</td>
+                    <td>[[${articulo.existencias}]]</td>
+                    <td>[[${articulo.activo}]]</td>
+                    <td><a th:href="@{/articulo/eliminar/}+ ${articulo.idArticulo}">Eliminar</td>
+                    <td><a th:href="@{/articulo/modificar/}+ ${articulo.idArticulo}">Modificar</td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        
+        <div th:if="${articulos ==null or articulos.empty}">
+            <h2>No se encuentran datos de table</h2>
+        </div>
+        
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

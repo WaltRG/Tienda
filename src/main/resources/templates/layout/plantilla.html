@@ -5,14 +5,32 @@
         <title>TechShop</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
-        <header th:fragment="header">
-            <h1>TechShop</h1>
+        <header th:fragment="header" class="header">
+            
+            
+            <nav class="nav">
+                <a th:href="@{/}" class="nav-link logo">TechShop</a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a class="nav-link nav-menu-link" th:href="@{/cliente/listado}">Clientes</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-link nav-menu-link" th:href="@{/articulo/listado}">Articulos</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a class="nav-link nav-menu-link" th:href="@{/categoria/listado}">Categorias</a>
+                    </li>
+                    
+                </ul>
+            </nav>
             </header>
         
-            <footer th:fragment="footer">
-                <p style="text-align: center">&COPY; Derechos reservados 2022</p>
+        <footer th:fragment="footer" class="footer">
+                <p>&COPY; Derechos reservados 2022</p>
             </footer>
             
         

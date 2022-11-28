@@ -17,7 +17,7 @@ public class Credito implements Serializable{
     @Column(name="id_credito")
     private long idCredito;
     
-    private double limite;
+    public double limite;
 
     public Credito() {
     }

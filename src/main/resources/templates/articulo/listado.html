@@ -1,29 +1,29 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         
         
 
-        <h2>Listado de articulos</h2>
-        <a th:href="@{/articulo/nuevo}">Nuevo articulo</a>
+        <h2>[[#{articulo.titulo}]]</h2>
+        <a th:href="@{/articulo/nuevo}">[[#{articulo.nuevo}]]</a>
         
         <div th:if="${articulos !=null and !articulos.empty}">
         <table border="1">
             <thead>
                 <tr>
-                    <th>Descripcion</th>
-                    <th>Detalle</th>
-                    <th>Precio</th>
-                    <th>Existencias</th>
-                    <th>Activo</th>
-                    <th>Eliminar</th>
-                    <th>Modificar</th>
+                    <th>[[#{articulo.descripcion}]]</th>
+                    <th>[[#{articulo.detalle}]]</th>
+                    <th>[[#{articulo.precio}]]</th>
+                    <th>[[#{articulo.existencias}]]</th>
+                    <th>[[#{articulo.activo}]]</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.actualizar}]]</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,8 +33,8 @@
                     <td>[[${articulo.precio}]]</td>
                     <td>[[${articulo.existencias}]]</td>
                     <td>[[${articulo.activo}]]</td>
-                    <td><a th:href="@{/articulo/eliminar/}+ ${articulo.idArticulo}">Eliminar</td>
-                    <td><a th:href="@{/articulo/modificar/}+ ${articulo.idArticulo}">Modificar</td>
+                    <td><a th:href="@{/articulo/eliminar/}+ ${articulo.idArticulo}">[[#{accion.eliminar}]]</td>
+                    <td><a th:href="@{/articulo/modificar/}+ ${articulo.idArticulo}">[[#{accion.actualizar}]]</td>
                     
                     
                 </tr>
@@ -43,7 +43,7 @@
         </div>
         
         <div th:if="${articulos ==null or articulos.empty}">
-            <h2>No se encuentran datos de table</h2>
+            <h2>[[#{articulo.no_mostrar}]]</h2>
         </div>
         
         <footer th:replace="layout/plantilla :: footer"/>

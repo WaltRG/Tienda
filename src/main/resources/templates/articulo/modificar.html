@@ -1,16 +1,16 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
     <xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
+  <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8">
-
+        
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         
-        <h1>Datos de articulo</h1>
-        <a th:href="@{/articulo/listado}">Regresar</a>
+        <h2>[[#{articulo.datos}]]</h2>
+        <a th:href="@{/articulo/listado}">[[#{accion.regresar}]]</a>
         
         <hr/>
         <form th:action="@{/articulo/guardar}"
@@ -18,27 +18,27 @@
                th:object="${articulo}">
             <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
             
-            <label for="descripcion">descripcion</label>
+            <label for="descripcion">[[#{articulo.descripcion}]]</label>
             <input type="text" name="descripcion" th:field="*{descripcion}"/>
             <br>
             
-            <label for="detalle">Detalle</label>
+            <label for="detalle">[[#{articulo.detalle}]]</label>
             <input type="text" name="detalle" th:field="*{detalle}"/>
             <br>
             
-            <label for="precio">Precio</label>
+            <label for="precio">[[#{articulo.precio}]]</label>
             <input type="double" name="precio" th:field="*{precio}"/>
             <br>
             
-            <label for="existencias">Existencias</label>
+            <label for="existencias">[[#{articulo.existencias}]]</label>
             <input type="text" name="existencias" th:field="*{existencias}"/>
             <br>
             
-            <label for="activo">Activo</label>
+            <label for="activo">[[#{articulo.activo}]]</label>
             <input type="boolean" name="activo" th:field="*{activo}"/>
             <br>
             
-            <input type="submit" name="guardar" value="Guardar"/>
+            <button type="submit" th:text="#{accion.guardar}"/>
             
         </form>
         <footer th:replace="layout/plantilla :: footer"/>

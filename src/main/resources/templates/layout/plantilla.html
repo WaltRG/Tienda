@@ -1,46 +1,93 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
     <xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TechShop</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
-        
-    </head>
-    <body>
-        <header th:fragment="header" class="header">
-            
-            
-            <nav class="nav">
-                <a th:href="@{/}" class="nav-link logo">TechShop</a>
-                <ul class="nav-menu">
-                    <li class="nav-menu-item">
-                        <a class="nav-link nav-menu-link" th:href="@{/cliente/listado}">Clientes</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-link nav-menu-link" th:href="@{/articulo/listado}">Articulos</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-link nav-menu-link" th:href="@{/categoria/listado}">Categorias</a>
-                    </li>
-                    
-                     <li class="nav-menu-item">
-                        <a class="nav-link nav-menu-link" th:href="@{/busqueda/listado}">Buscar Cliente</a>
-                    </li>
-                    
-                    
-                    
-                </ul>
-            </nav>
-            </header>
-        
-        <footer th:fragment="footer" class="footer">
-                <p>&COPY; Derechos reservados 2022</p>
-            </footer>
-            
-        
-        
-        
-    </body>
-</html>
+        <xmlns:th="http://www.thymeleaf.org/extras/spring-security">
+
+
+            <head th:fragment="head">
+                <title>TechShop</title>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+                <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+                <script th:src="@{webjars/jquery/jquery.min.js}"></script>
+                <script th:src="@{webjars/poper.js/umd/popper.min.js}"></script>
+                <script th:src="@{webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+            </head>
+            <body>
+                <header th:fragment="header" class="header">
+
+
+                    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                        <div class="container">
+                            <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
+                            <button class="navbar-toggler" data-toggler="collapse" data-target="#navbarCollapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                                <ul class="navbar-nav">
+                                    <li class="nav-item px-2">
+                                        <a class="nav-link nav-menu-link" th:href="@{/cliente/listado}">[[#{plantilla.clientes}]]</a>
+                                    </li>
+                                    <li class="nav-item px-2">
+                                        <a class="nav-link nav-menu-link" th:href="@{/articulo/listado}">[[#{plantilla.articulos}]]</a>
+                                    </li>
+                                    <li class="nav-item px-2">
+                                        <a class="nav-link nav-menu-link" th:href="@{/categoria/listado}">[[#{plantilla.categorias}]]</a>
+                                    </li>
+
+                                    <li class="nav-item px-2">
+                                        <a class="nav-link nav-menu-link" th:href="@{/busqueda/listado}">Buscar Cliente</a>
+                                    </li>
+                                </ul>
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item mr-auto">
+                                        <a href="#" class="nav-link">
+                                            <i class="fas fa-user"></i>
+                                            [[#{plantilla.bienvenido}]]
+                                            <span sec:authentication="name"></span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <form method="post" th:action="@{/logout}">
+                                            <a href="#" class="nav-link" onclick="this.parentNode.submit();">
+                                                <i class="fas fa-user-times"></i>
+                                                [[#{plantilla.logout}]]
+                                            </a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <section id="main-header" class="py-2 bg-success text-white">
+                        <div class="containert">
+                            <div class="row">
+                                <div class="col-mid-6">
+                                    <h1>
+                                        <i class="fas fa-cog"></i> [[#{plantilla.titulo}]]
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </header>
+
+                <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
+                    <div class="container">
+                        <div class="col">
+                            <p class="lead text-center">&COPY;[[#{plantilla.derechos}]] |
+                                <a th:href="@{/(lang=es)}">ES</a> |
+                                <a th:href="@{/(lang=en)}">EN</a>
+                            </p>
+                        </div>
+                    </div>
+                </footer>
+
+
+
+
+            </body>
+            </html>

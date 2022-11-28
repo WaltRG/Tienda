@@ -1,16 +1,16 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
     <xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8">
-
+        
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         
-        <h1>Datos de categoria</h1>
-        <a th:href="@{/categoria/listado}">Regresar</a>
+        <h1>[[#{categoria.datos}]]</h1>
+        <a th:href="@{/categoria/listado}">[[#{accion.regresar}]]</a>
         
         <hr/>
         <form th:action="@{/categoria/guardar}"
@@ -18,16 +18,16 @@
                th:object="${categoria}">
             <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
             
-            <label for="descripcion">Descripcion</label>
+            <label for="descripcion">[[#{categoria.descripcion}]]</label>
             <input type="text" name="descripcion" th:field="*{descripcion}"/>
             <br>
             
-            <label for="activo">Activo</label>
+            <label for="activo">[[#{categoria.activo}]]</label>
             <input type="boolean" name="activo" th:field="*{activo}"/>
             <br>
             
             
-            <input type="submit" name="guardar" value="Guardar"/>
+            <button type="submit" th:text="#{accion.guardar}"/>
             
         </form>
         <footer th:replace="layout/plantilla :: footer"/>

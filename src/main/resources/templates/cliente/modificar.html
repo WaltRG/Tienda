@@ -1,16 +1,16 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
     <xmlns:th="http://www.w3.org/1999/xhtml">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8">
-
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         
-        <h1>Datos de cliente</h1>
-        <a th:href="@{/cliente/listado}">Regresar</a>
+        <h2>[[#{cliente.datos}]]</h2>
+        <a th:href="@{/cliente/listado}">[[#{accion.regresar}]]</a>
         
         <hr/>
         <form th:action="@{/cliente/guardar}"
@@ -20,29 +20,29 @@
             
             
             
-            <label for="nombre">Nombre</label>
+            <label for="nombre">[[#{cliente.nombre}]]</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <br>
             
-            <label for="apellidos">Apellidos</label>
+            <label for="apellidos">[[#{cliente.apellidos}]]</label>
             <input type="text" name="apellidos" th:field="*{apellidos}"/>
             <br>
             
-            <label for="correo">Correo</label>
+            <label for="correo">[[#{cliente.correo}]]</label>
             <input type="email" name="correo" th:field="*{correo}"/>
             <br>
             
-            <label for="telefono">Telefono</label>
+            <label for="telefono">[[#{cliente.telefono}]]</label>
             <input type="tel" name="telefono" th:field="*{telefono}"/>
             <br>
             
-            <label for="limite">Credito</label>
+            <label for="limite">[[#{cliente.limite}]]</label>
             <input type="number" name="limite" th:field="*{credito.limite}"/>
             <br>
             
             
             
-            <input type="submit" name="guardar" value="Guardar"/>
+            <button type="submit" th:text="#{accion.guardar}"/>
             
         </form>
         <footer th:replace="layout/plantilla :: footer"/>

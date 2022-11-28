@@ -1,34 +1,34 @@
 <html
     xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
         <meta charset="UTF-8">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         
        
 
-        <h2>Listado de categorias</h2>
-        <a th:href="@{/categoria/nuevo}">Nuevo categoria</a>
+        <h2>[[#{categoria.titulo}]]</h2>
+        <a th:href="@{/categoria/nuevo}">[[#{categoria.nuevo}]]</a>
         
         <div th:if="${categorias !=null and !categorias.empty}">
         <table border="1">
             <thead>
                 <tr>
-                    <th>Descripcion</th>
-                    <th>Activo</th>
-                    <th>Eliminar</th>
-                    <th>Modificar</th>
+                    <th>[[#{categoria.descripcion}]]</th>
+                    <th>[[#{categoria.activo}]]</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.actualizar}]]</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="categoria : ${categorias}">
                     <td>[[${categoria.descripcion}]]</td>
                     <td>[[${categoria.activo}]]</td>         
-                    <td><a th:href="@{/categoria/eliminar/}+ ${categoria.idCategoria}">Eliminar</td>
-                    <td><a th:href="@{/categoria/modificar/}+ ${categoria.idCategoria}">Modificar</td>
+                    <td><a th:href="@{/categoria/eliminar/}+ ${categoria.idCategoria}">[[#{accion.eliminar}]]</td>
+                    <td><a th:href="@{/categoria/modificar/}+ ${categoria.idCategoria}">[[#{accion.actualizar}]]</td>
                     
                     
                 </tr>
@@ -37,7 +37,7 @@
         </div>
         
         <div th:if="${categorias ==null or categorias.empty}">
-            <h2>No se encuentran datos de table</h2>
+            <h2>[[#{categoria.no_mostrar}]]</h2>
         </div>
         
         <footer th:replace="layout/plantilla :: footer"/>

@@ -56,6 +56,19 @@
                                 </form>
                             </li>
                         </ul>
+                        
+                        <ul sec:authorize="!isAuthenticated()" class="navbar-nav ml-auto">
+                            
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/login}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class="fas fa-door-open"></i> [[#{login.login}]]
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                        
+                        
                     </div>                    
                 </div>|
             </nav>
